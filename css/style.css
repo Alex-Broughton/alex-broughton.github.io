@@ -82,7 +82,6 @@ a:hover { color: var(--ink); }
   white-space: nowrap;
 }
 .wordmark:hover { color: var(--ink); }
-.wordmark .given { font-style: italic; font-weight: 400; }
 
 .site-nav {
   display: flex;
@@ -175,24 +174,10 @@ p:last-child { margin-bottom: 0; }
 /* portrait column */
 .portrait-fig { margin: 0; }
 
-.portrait-frame {
-  position: relative;
-  background: #FFFFFF;
-  border: 1px solid var(--rule);
-  padding: 10px;
-}
-.portrait-frame::after {
-  content: "";
-  position: absolute;
-  inset: 14px -14px -14px 14px;
-  border: 1px solid var(--rule);
-  z-index: -1;
-}
-.portrait-frame img {
+.portrait-fig img {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
-  filter: contrast(1.04);
 }
 
 .portrait-caption {
@@ -220,10 +205,13 @@ p:last-child { margin-bottom: 0; }
   border-bottom: 1px solid var(--rule);
 }
 
-.affil { font-size: .95rem; line-height: 1.5; margin-bottom: 1rem; }
-.affil:last-child { margin-bottom: 0; }
-.affil strong { font-weight: 600; display: block; }
-.affil span { color: var(--ink-mute); font-family: var(--sans); font-size: .82rem; }
+.affil-list {
+  list-style: none;
+  margin: 0; padding: 0;
+  font-size: .95rem;
+  line-height: 1.45;
+}
+.affil-list li + li { margin-top: .6rem; }
 
 .contact-list {
   list-style: none;
@@ -440,10 +428,7 @@ p:last-child { margin-bottom: 0; }
   margin: 0 0 .4rem;
 }
 .pub-authors .me { font-weight: 700; color: var(--ink); }
-.pub-authors .etal-toggle {
-  background: none; border: 0; padding: 0 0 0 .3em;
-  font: inherit; color: var(--accent); cursor: pointer; text-decoration: underline;
-}
+.pub-authors .more { color: var(--ink-mute); white-space: nowrap; }
 
 .pub-venue {
   font-family: var(--sans);
@@ -668,8 +653,7 @@ p:last-child { margin-bottom: 0; }
   .bio          { order: 2; }
   .hero-meta    { order: 3; }
   .hero-meta .side-block:first-child { margin-top: 0; }
-  .portrait-frame { max-width: 320px; }
-  .portrait-frame::after { display: none; }
+  .portrait-fig { max-width: 320px; }
 
   .outreach-item { grid-template-columns: 1fr; gap: .9rem; }
   .outreach-aside { display: flex; flex-wrap: wrap; gap: .25rem .9rem; align-items: baseline; }

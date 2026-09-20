@@ -11,8 +11,6 @@
 <meta property="og:type" content="profile">
 <meta property="og:url" content="https://alex-broughton.github.io/">
 <meta property="og:image" content="https://alex-broughton.github.io/img/portrait.jpg">
-<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-<link rel="icon" href="img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
@@ -23,7 +21,7 @@
 
 <header class="site-header">
   <div class="wrap">
-    <a class="wordmark" href="index.html"><span class="given">Alex</span> Broughton</a>
+    <a class="wordmark" href="index.html">Alex Broughton</a>
     <nav class="site-nav" aria-label="Primary">
       <a href="index.html" aria-current="page">Home</a>
       <a href="research.html">Research</a>
@@ -40,39 +38,28 @@
 
     <!-- ---------- left column: portrait ---------- -->
       <figure class="portrait-fig">
-        <div class="portrait-frame">
-          <picture>
-            <source srcset="img/portrait.webp" type="image/webp">
-            <img src="img/portrait.jpg" width="1200" height="1200"
-                 alt="Pen-and-ink portrait drawing of Alex Broughton.">
-          </picture>
-        </div>
+        <picture>
+          <source srcset="img/portrait.webp" type="image/webp">
+          <img src="img/portrait.jpg" width="1200" height="1200"
+               alt="Pen-and-ink portrait drawing of Alex Broughton.">
+        </picture>
       </figure>
 
     <!-- ---------- left column: affiliations / contact / links ---------- -->
     <div class="hero-meta">
       <div class="side-block">
         <h2>Affiliations</h2>
-        <p class="affil">
-          <strong>Kavli Institute for Particle Astrophysics &amp; Cosmology</strong>
-          <span>SLAC National Accelerator Laboratory · Stanford University</span>
-        </p>
-        <p class="affil">
-          <strong>Vera C. Rubin Observatory</strong>
-          <span>LSST Science Pipelines — Instrument Signature Removal &amp; Calibration</span>
-        </p>
-        <p class="affil">
-          <strong>LSST Dark Energy Science Collaboration</strong>
-          <span>Pixel-to-Object working group</span>
-        </p>
+        <ul class="affil-list">
+          <li>Kavli Institute for Particle Astrophysics &amp; Cosmology</li>
+          <li>SLAC National Accelerator Laboratory</li>
+          <li>Stanford University</li>
+        </ul>
       </div>
 
       <div class="side-block">
         <h2>Contact</h2>
         <ul class="contact-list">
-          <li><span class="k">Email</span> <a href="mailto:abrought@slac.stanford.edu">abrought@slac.stanford.edu</a></li>
-          <li><span class="k">Office</span> <span>2575 Sand Hill Rd, Menlo Park, CA 94025</span></li>
-          <li><span class="k">ORCID</span> <a href="https://orcid.org/0000-0001-6966-5316">0000-0001-6966-5316</a></li>
+          <li><span class="k">Email</span> <a href="mailto:abrought@stanford.edu">abrought@stanford.edu</a></li>
         </ul>
       </div>
 
@@ -101,8 +88,7 @@
 
     <!-- ---------- right column ---------- -->
     <div class="bio">
-      <h1>Alex Broughton</h1>
-      <p class="role">Postdoctoral Research Associate · KIPAC / SLAC National Accelerator Laboratory</p>
+      <h1>About me</h1>
 
       <div class="prose">
         <p class="lede">
@@ -111,8 +97,15 @@
         </p>
 
         <p>
-          At KIPAC I lead <strong>Instrument Signature Removal (ISR)</strong> and sensor calibration
-          for the LSST Science Pipelines: the layer of the Rubin data management system that converts
+          I am a Postdoctoral Research Associate at the <strong>Kavli Institute for Particle
+          Astrophysics and Cosmology (KIPAC)</strong> and the <strong>Center for Decoding the
+          Universe (C4DU)</strong>, at <strong>SLAC National Accelerator Laboratory</strong> and
+          <strong>Stanford University</strong>.
+        </p>
+
+        <p>
+          I lead <strong>Instrument Signature Removal (ISR)</strong> and sensor calibration
+          for the LSST Science Pipelines at the Vera C. Rubin Observatory: the layer of the Rubin data management system that converts
           LSSTCam's 3.2-gigapixel raw output into science-ready images. That work spans detector-level
           physics — the brighter-fatter effect, charge transfer inefficiency, crosstalk, bias and dark
           structure, stray light, and the nonlinear behaviour of thick fully-depleted CCDs — and the
@@ -151,17 +144,6 @@
           <em>Rubin 2036</em>.
         </p>
 
-        <ul class="keywords">
-          <li>Instrument signature removal</li>
-          <li>CCD systematics</li>
-          <li>Brighter-fatter effect</li>
-          <li>Calibration products</li>
-          <li>Weak lensing</li>
-          <li>Cluster cosmology</li>
-          <li>PSF modelling</li>
-          <li>Difference imaging</li>
-          <li>Survey pipelines</li>
-        </ul>
 
         <div class="hero-links">
           <a href="research.html">Research &amp; publications</a>
@@ -179,12 +161,6 @@
 <footer class="site-footer">
   <div class="wrap">
     <span>© <span id="year">2026</span> Alex Broughton</span>
-    <nav class="footer-links" aria-label="Footer">
-      <a href="mailto:abrought@slac.stanford.edu">Email</a>
-      <a href="https://github.com/Alex-Broughton">GitHub</a>
-      <a href="https://orcid.org/0000-0001-6966-5316">ORCID</a>
-      <a href="cv/cv.pdf">CV (PDF)</a>
-    </nav>
   </div>
 </footer>
 <script>document.getElementById('year').textContent=new Date().getFullYear();</script>

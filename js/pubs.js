@@ -10,7 +10,7 @@ const ORCID_ID = '0000-0001-6966-5316';
 /* Surname variants that should be bolded in author lists. */
 const ME = [/^broughton,?\s*(a(lex(ander)?)?\.?)?$/i, /^(alex(ander)?\.?\s+)?broughton$/i];
 
-const AUTHOR_CUTOFF = 12;   // collapse author lists longer than this
+const AUTHOR_CUTOFF = 8;    // show this many, then elide with an ellipsis
 
 const state = { pubs: [], filter: 'all' };
 
@@ -39,23 +39,21 @@ function shortName(name) {
   return parts.map((p) => p[0].toUpperCase() + '.').join(' ') + ' ' + last;
 }
 
-function authorHTML(authors, uid) {
+/* Long author lists are elided with an ellipsis, but Alex is always shown. */
+function authorHTML(authors) {
   if (!authors || !authors.length) return '';
-  const spans = authors.map((a) =>
-    isMe(a) ? `<span class="me">${esc(shortName(a))}</span>` : esc(shortName(a)));
+  const fmt = (a) =>
+    isMe(a) ? `<span class="me">${esc(shortName(a))}</span>` : esc(shortName(a));
 
-  if (spans.length <= AUTHOR_CUTOFF) return spans.join(', ');
+  if (authors.length <= AUTHOR_CUTOFF) return authors.map(fmt).join(', ');
 
-  /* Always keep Alex visible even when collapsing. */
   const meIdx = authors.findIndex(isMe);
-  const head = spans.slice(0, AUTHOR_CUTOFF);
-  if (meIdx >= AUTHOR_CUTOFF) head[AUTHOR_CUTOFF - 1] = spans[meIdx];
+  const head = authors.slice(0, AUTHOR_CUTOFF).map(fmt);
+  let out = head.join(', ');
 
-  return `<span data-short="${uid}">${head.join(', ')}` +
-    ` <button type="button" class="etal-toggle" data-expand="${uid}">` +
-    `+ ${spans.length - AUTHOR_CUTOFF} more</button></span>` +
-    `<span data-full="${uid}" hidden>${spans.join(', ')}` +
-    ` <button type="button" class="etal-toggle" data-collapse="${uid}">show fewer</button></span>`;
+  if (meIdx >= AUTHOR_CUTOFF) out += `, … , ${fmt(authors[meIdx])}`;
+
+  return out + ` <span class="more">… (${authors.length} authors)</span>`;
 }
 
 function typeOf(p) {
@@ -107,7 +105,6 @@ function render() {
   for (const y of years) {
     html += `<h3 class="pub-year">${esc(y)}</h3><ol class="pub-list">`;
     for (const p of list.filter((q) => (q.year || '—') === y)) {
-      const uid = 'p' + n;
       const title = p.url || (p.doi ? `https://doi.org/${p.doi}` : null);
       html += `<li class="pub">
         <div class="idx">${n--}</div>
@@ -115,7 +112,7 @@ function render() {
           <h4 class="pub-title">${title
             ? `<a href="${esc(title)}" rel="noopener">${esc(p.title)}</a>`
             : esc(p.title)}</h4>
-          <p class="pub-authors">${authorHTML(p.authors, uid)}</p>
+          <p class="pub-authors">${authorHTML(p.authors)}</p>
           <p class="pub-venue">${venueHTML(p)}</p>
         </div>
       </li>`;
@@ -179,7 +176,7 @@ async function fetchFromOrcid() {
   render();
 })();
 
-/* filters + author expansion (delegated) */
+/* type filters (delegated) */
 document.addEventListener('click', (ev) => {
   const f = ev.target.closest('.pub-filters button');
   if (f) {
@@ -188,18 +185,5 @@ document.addEventListener('click', (ev) => {
       .forEach((b) => b.setAttribute('aria-pressed', String(b === f)));
     render();
     return;
-  }
-  const exp = ev.target.closest('[data-expand]');
-  if (exp) {
-    const id = exp.dataset.expand;
-    document.querySelector(`[data-short="${id}"]`).hidden = true;
-    document.querySelector(`[data-full="${id}"]`).hidden = false;
-    return;
-  }
-  const col = ev.target.closest('[data-collapse]');
-  if (col) {
-    const id = col.dataset.collapse;
-    document.querySelector(`[data-full="${id}"]`).hidden = true;
-    document.querySelector(`[data-short="${id}"]`).hidden = false;
   }
 });
