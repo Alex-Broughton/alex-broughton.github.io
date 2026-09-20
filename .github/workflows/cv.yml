@@ -1,0 +1,91 @@
+name: Rebuild CV
+
+# Checks out Alex-Broughton/CV, compiles cv.tex with a full TeX Live image,
+# and commits the resulting PDF to cv/cv.pdf here.
+#
+# Triggers:
+#   * repository_dispatch (event type "cv-updated") — fired by the CV repo on
+#     every push, for near-instant updates. See docs/cv-sync.md for setup.
+#   * nightly cron — the zero-configuration fallback.
+#   * manual run from the Actions tab.
+
+on:
+  repository_dispatch:
+    types: [cv-updated]
+  schedule:
+    - cron: "42 9 * * *"          # 09:42 UTC daily
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cv.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cv
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout website
+        uses: actions/checkout@v4
+
+      - name: Checkout CV source
+        uses: actions/checkout@v4
+        with:
+          repository: Alex-Broughton/CV
+          path: cv-src
+          # For a private CV repo, add a PAT with repo:read as secret CV_TOKEN
+          # and uncomment the next line:
+          # token: ${{ secrets.CV_TOKEN }}
+
+      - name: Compile cv.tex
+        uses: xu-cheng/latex-action@v3
+        with:
+          working_directory: cv-src
+          root_file: cv.tex
+          latexmk_use_lualatex: false
+          # academicons / orcidlink / biblatex need the full scheme
+          texlive_version: 2024
+          args: -pdf -f -interaction=nonstopmode -file-line-error
+
+      - name: Stage PDF
+        run: |
+          test -s cv-src/cv.pdf
+          mkdir -p cv
+          cp cv-src/cv.pdf cv/cv.pdf
+          rm -rf cv-src
+
+      - name: Commit if the CV actually changed
+        run: |
+          set -euo pipefail
+          sudo apt-get install -y -qq poppler-utils >/dev/null 2>&1 || true
+
+          git add -A cv/cv.pdf
+          if git diff --cached --quiet -- cv/cv.pdf; then
+            echo "Byte-identical - nothing to do."
+            exit 0
+          fi
+
+          # A LaTeX rebuild changes embedded timestamps even when nothing else
+          # did, so compare the extracted text before committing churn.
+          if command -v pdftotext >/dev/null 2>&1 && git cat-file -e HEAD:cv/cv.pdf 2>/dev/null; then
+            git show HEAD:cv/cv.pdf > /tmp/old.pdf
+            pdftotext -q /tmp/old.pdf /tmp/old.txt || : > /tmp/old.txt
+            pdftotext -q cv/cv.pdf    /tmp/new.txt || : > /tmp/new.txt
+            if cmp -s /tmp/old.txt /tmp/new.txt; then
+              echo "Rendered text identical - skipping commit."
+              git restore --staged cv/cv.pdf
+              git checkout -- cv/cv.pdf
+              exit 0
+            fi
+          fi
+
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "cv: rebuild from Alex-Broughton/CV"
+          git push

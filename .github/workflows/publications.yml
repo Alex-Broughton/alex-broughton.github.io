@@ -1,0 +1,52 @@
+name: Refresh publications
+
+# Pulls the ORCID record, enriches it with NASA ADS (full author lists,
+# volume/pages, citation counts) and commits data/publications.json.
+
+on:
+  schedule:
+    - cron: "17 9 * * *"          # 09:17 UTC daily (~02:17 America/Los_Angeles)
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/build_publications.py"
+      - "data/publications.seed.json"
+      - ".github/workflows/publications.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publications
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install --quiet requests
+
+      - name: Build publications.json
+        env:
+          ORCID_ID: "0000-0001-6966-5316"
+          ADS_TOKEN: ${{ secrets.ADS_TOKEN }}
+        run: python scripts/build_publications.py
+
+      - name: Commit if changed
+        run: |
+          if git diff --quiet -- data/publications.json; then
+            echo "No change."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/publications.json
+          git commit -m "data: refresh publications from ORCID + ADS"
+          git push

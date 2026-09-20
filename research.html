@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Research — Alex Broughton</title>
+<meta name="description" content="Research areas and publications: instrument signature removal and CCD systematics, calibration for Rubin/LSST, weak lensing and cluster cosmology, machine learning for survey data.">
+<link rel="canonical" href="https://alex-broughton.github.io/research.html">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="icon" href="img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="wordmark" href="index.html"><span class="given">Alex</span> Broughton</a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="research.html" aria-current="page">Research</a>
+      <a href="outreach.html">Outreach</a>
+      <a href="cv.html">CV</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="page-intro wrap">
+  <span class="eyebrow">Research</span>
+  <h1>From pixels to cosmological parameters</h1>
+  <p class="lede">
+    Four threads, one problem: making a decade of Rubin imaging trustworthy at the precision
+    that Stage&nbsp;IV dark energy constraints demand.
+  </p>
+</section>
+
+<section class="wrap" style="padding-bottom:0">
+  <div class="area-strip">
+
+    <article class="area-card">
+      <div class="ico" aria-hidden="true">
+        <!-- CCD / pixel grid with charge well -->
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4">
+          <rect x="4.5" y="4.5" width="31" height="31" rx="1.5"/>
+          <path d="M14.8 4.5v31M25.2 4.5v31M4.5 14.8h31M4.5 25.2h31"/>
+          <circle cx="20" cy="20" r="3.1" fill="currentColor" stroke="none" opacity=".85"/>
+          <circle cx="20" cy="20" r="5" opacity=".45"/>
+        </svg>
+      </div>
+      <h3>Instrument Signature Removal</h3>
+      <p>Detector-level physics and the pipeline code that removes it from every LSST exposure.</p>
+    </article>
+
+    <article class="area-card">
+      <div class="ico" aria-hidden="true">
+        <!-- calibration: flat field + tick ruler -->
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+          <path d="M5 30.5h30"/>
+          <path d="M9 30.5v-4M14 30.5v-6.5M19 30.5v-3M24 30.5v-8M29 30.5v-5"/>
+          <path d="M6.5 15.5c4-6 7.5-6 11.5 0s7.5 6 11.5 0" opacity=".75"/>
+          <circle cx="32.5" cy="9.5" r="2.6"/>
+        </svg>
+      </div>
+      <h3>Calibration &amp; Verification</h3>
+      <p>Calibration products, on-sky strategies, and the metrics that prove they work.</p>
+    </article>
+
+    <article class="area-card">
+      <div class="ico" aria-hidden="true">
+        <!-- weak lensing: sheared ellipses around a mass -->
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4">
+          <circle cx="20" cy="20" r="3.4" fill="currentColor" stroke="none" opacity=".85"/>
+          <ellipse cx="20" cy="8.5" rx="4.6" ry="2.2"/>
+          <ellipse cx="20" cy="31.5" rx="4.6" ry="2.2"/>
+          <ellipse cx="8.5" cy="20" rx="2.2" ry="4.6"/>
+          <ellipse cx="31.5" cy="20" rx="2.2" ry="4.6"/>
+          <ellipse cx="11" cy="11" rx="4.3" ry="2.1" transform="rotate(-45 11 11)"/>
+          <ellipse cx="29" cy="29" rx="4.3" ry="2.1" transform="rotate(-45 29 29)"/>
+        </svg>
+      </div>
+      <h3>Weak Lensing &amp; Clusters</h3>
+      <p>Shear estimation, PSF diagnostics, and galaxy cluster cosmology for DESC.</p>
+    </article>
+
+    <article class="area-card">
+      <div class="ico" aria-hidden="true">
+        <!-- ML: network nodes -->
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M11 11.5L22 8M11 11.5L22 20M11 28.5L22 20M11 28.5L22 32M22 8l7 12M22 20l7 0M22 32l7-12" opacity=".55"/>
+          <circle cx="10" cy="11.5" r="2.5" fill="currentColor" stroke="none"/>
+          <circle cx="10" cy="28.5" r="2.5" fill="currentColor" stroke="none"/>
+          <circle cx="23" cy="8" r="2.2"/>
+          <circle cx="23" cy="20" r="2.2"/>
+          <circle cx="23" cy="32" r="2.2"/>
+          <circle cx="30" cy="20" r="2.5" fill="currentColor" stroke="none"/>
+        </svg>
+      </div>
+      <h3>ML for Survey Data</h3>
+      <p>Learned models for classification, systematics, and astrophysical emission.</p>
+    </article>
+
+  </div>
+</section>
+
+<section class="section wrap" style="padding-top:0">
+  <div class="area-detail">
+    <div>
+      <h3>Instrument signature removal for LSST</h3>
+      <p>
+        I lead ISR development, commissioning, and science validation for the Rubin Data Management
+        Science Pipelines. The work covers the full chain of detector effects in thick,
+        fully-depleted CCDs — bias structure and persistence, dark current, crosstalk, nonlinearity,
+        charge transfer inefficiency, stray light, and above all the <em>brighter-fatter effect</em>,
+        where charge already collected in a pixel deflects later arrivals and produces a
+        flux-dependent PSF. I developed a physically-motivated correction that accounts for the
+        higher-order, anisotropic evolution of the effect that the standard kernel method assumes
+        away, and used the residuals to define a new full-well metric for LSSTCam sensors.
+      </p>
+    </div>
+    <div>
+      <h3>Calibration products and verification</h3>
+      <p>
+        Corrections are only as good as the calibration products behind them. I build and validate
+        those products for LSSTCam, define the verification metrics that gate their release, and
+        contributed to the ComCam on-sky calibration plan as part of the TAXICAB team. Earlier, I
+        worked on LSSTCam electro-optical testing and focal-plane characterization at SLAC.
+      </p>
+    </div>
+    <div>
+      <h3>Weak lensing, shear, and cluster cosmology</h3>
+      <p>
+        In DESC's Pixel-to-Object working group I contribute forward models that propagate image
+        systematics into object-level measurements — the step where a detector artifact becomes a
+        bias in shear. Alongside that I work on shear mapping with metadetection catalogs, PSF
+        modelling and rho-statistic diagnostics, star–galaxy separation, photometric redshifts, and
+        galaxy cluster cosmology on Rubin data previews.
+      </p>
+    </div>
+    <div>
+      <h3>Machine learning for imaging and emission models</h3>
+      <p>
+        I use learned models where the physics is well-posed but the mapping is intractable:
+        multi-method classification of stars and galaxies in Rubin DP2, classifiers for stray-light
+        contamination in survey visits, and — in my thesis work — deep learning models of the
+        discrete component of Galactic interstellar γ-ray emission, which sharpened the systematic
+        error budget on the Fermi-LAT Galactic Center excess.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PUBLICATIONS ============================ -->
+<section class="section wrap">
+  <div class="section-head">
+    <span class="eyebrow">Publications</span>
+    <h2>Peer-reviewed articles, proceedings, and preprints</h2>
+    <p>
+      This list is generated from my
+      <a href="https://orcid.org/0000-0001-6966-5316">ORCID record</a> and enriched nightly with full
+      author lists and citation counts from <a href="https://ui.adsabs.harvard.edu/">NASA ADS</a>.
+    </p>
+  </div>
+
+  <div class="pub-toolbar">
+    <div class="pub-filters" role="group" aria-label="Filter publications by type">
+      <button type="button" data-filter="all" aria-pressed="true">All</button>
+      <button type="button" data-filter="article" aria-pressed="false">Journal</button>
+      <button type="button" data-filter="proceedings" aria-pressed="false">Proceedings</button>
+      <button type="button" data-filter="preprint" aria-pressed="false">Preprints</button>
+    </div>
+    <p class="pub-meta-note" id="pub-meta">Loading…</p>
+  </div>
+
+  <div id="pubs"><p class="pub-status">Loading publications…</p></div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© <span id="year">2026</span> Alex Broughton</span>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="mailto:abrought@slac.stanford.edu">Email</a>
+      <a href="https://github.com/Alex-Broughton">GitHub</a>
+      <a href="https://orcid.org/0000-0001-6966-5316">ORCID</a>
+      <a href="cv/cv.pdf">CV (PDF)</a>
+    </nav>
+  </div>
+</footer>
+<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+<script src="js/pubs.js" defer></script>
+</body>
+</html>
