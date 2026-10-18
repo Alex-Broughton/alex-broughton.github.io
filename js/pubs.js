@@ -156,12 +156,13 @@ async function fetchFromOrcid() {
     const d = await r.json();
     state.pubs = d.publications || [];
     const when = d.generated ? new Date(d.generated) : null;
-    meta.textContent = `${state.pubs.length} records` +
-      (when ? ` · updated ${when.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}` : '');
+    meta.textContent = when
+      ? `Updated ${when.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}`
+      : '';
   } catch (e) {
     try {
       state.pubs = await fetchFromOrcid();
-      meta.textContent = `${state.pubs.length} records · live from ORCID`;
+      meta.textContent = 'Live from ORCID';
     } catch (e2) {
       document.getElementById('pubs').innerHTML =
         `<p class="pub-status">Publication list unavailable right now — see the
