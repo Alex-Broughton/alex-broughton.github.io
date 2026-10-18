@@ -233,7 +233,7 @@ p:last-child { margin-bottom: 0; }
 }
 .hero-meta a:hover { color: var(--accent-lt); text-decoration-thickness: 2px; }
 .meta-contact a { word-break: break-word; }
-.meta-contact { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: .5rem; }
+.email-wrap { position: relative; display: inline-block; }
 .email-text { color: var(--ink); font-weight: 500; word-break: break-word; }
 .copy-btn {
   font-family: var(--sans);
@@ -250,6 +250,12 @@ p:last-child { margin-bottom: 0; }
   align-items: center;
   justify-content: center;
   padding: .25rem .4rem;
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: .25rem;
+  white-space: nowrap;
   min-height: 1.6rem;
   line-height: 1;
   cursor: pointer;
@@ -257,7 +263,7 @@ p:last-child { margin-bottom: 0; }
 }
 .copy-btn:hover { color: var(--ink); }
 .copy-btn svg { display: block; flex: none; width: 15px; height: 15px; overflow: visible; }
-.copy-btn:active { transform: translateY(1px); }
+.copy-btn:active { transform: translateY(calc(-50% + 1px)); }
 .copy-btn.copied { color: #2E7D4F; font-weight: 600; }
 
 .meta-links { display: flex; flex-wrap: wrap; justify-content: center; gap: .25rem 1.1rem; }
