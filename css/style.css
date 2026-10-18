@@ -25,7 +25,14 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  /* Reserve scrollbar space on every page so the header/nav doesn't shift
+     between short pages (no scrollbar) and long ones (scrollbar). */
+  scrollbar-gutter: stable;
+  overflow-y: scroll;
+}
 
 body {
   margin: 0;
@@ -195,7 +202,7 @@ p:last-child { margin-bottom: 0; }
 
 /* affiliation / contact lines under portrait */
 .hero-meta { margin-top: 1.75rem; text-align: center; }
-.hero-meta p { margin: 0; }
+.hero-meta p { margin: 0; text-align: center; }
 .hero-meta p + p { margin-top: .9rem; }
 
 .meta-affil {
@@ -214,13 +221,14 @@ p:last-child { margin-bottom: 0; }
 
 .hero-meta a {
   color: var(--accent);
+  font-weight: 500;
   text-decoration: underline;
-  text-decoration-color: color-mix(in srgb, var(--accent) 35%, transparent);
-  text-decoration-thickness: 1px;
+  text-decoration-color: currentColor;
+  text-decoration-thickness: 1.5px;
   text-underline-offset: 3px;
-  transition: text-decoration-color .15s, color .15s;
+  transition: color .15s;
 }
-.hero-meta a:hover { color: var(--ink); text-decoration-color: currentColor; }
+.hero-meta a:hover { color: var(--accent-lt); text-decoration-thickness: 2px; }
 .meta-contact a { word-break: break-word; }
 
 .meta-links { display: flex; flex-wrap: wrap; justify-content: center; gap: .25rem 1.1rem; }
