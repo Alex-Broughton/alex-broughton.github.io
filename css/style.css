@@ -240,8 +240,10 @@ p:last-child { margin-bottom: 0; }
   font-size: .72rem;
   font-weight: 500;
   letter-spacing: .03em;
-  color: var(--ink-mute);
-  background: none;
+  -webkit-appearance: none;
+  appearance: none;
+  color: var(--ink-soft);
+  background: transparent;
   border: 0;
   border-radius: 4px;
   display: inline-flex;
@@ -254,6 +256,7 @@ p:last-child { margin-bottom: 0; }
   transition: color .15s, border-color .15s, background .15s;
 }
 .copy-btn:hover { color: var(--ink); }
+.copy-btn svg { display: block; flex: none; width: 15px; height: 15px; overflow: visible; }
 .copy-btn:active { transform: translateY(1px); }
 .copy-btn.copied { color: #2E7D4F; font-weight: 600; }
 
