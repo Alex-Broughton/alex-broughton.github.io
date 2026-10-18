@@ -599,6 +599,19 @@ section[id] { scroll-margin-top: 4.5rem; }
   display: block;
   margin-bottom: .45rem;
 }
+.role-badge {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: .64rem;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: .2rem .5rem;
+  border-radius: 2px;
+  margin-bottom: .55rem;
+}
+.role-author { background: var(--ink); color: #fff; }
+.role-featured { border: 1px solid var(--rule); color: var(--ink-mute); }
 .writing-item h3 { font-size: 1.25rem; margin-bottom: .35em; }
 .writing-item p { color: var(--ink-soft); font-size: 1rem; margin: 0 0 .8rem; max-width: var(--measure); }
 .writing-item:hover .more { text-decoration: underline; }
