@@ -5,15 +5,15 @@
    ============================================================ */
 
 :root {
-  --paper:      #EEF0F2;
-  --paper-2:    #E4E7EB;
-  --ink:        #16171A;
-  --ink-soft:   #44464C;
-  --ink-mute:   #6F737B;
-  --rule:       #D3D7DD;
-  --rule-soft:  #E0E3E8;
-  --accent:     #1F3A5F;
-  --accent-lt:  #375C86;
+  --paper:      #F4F2ED;
+  --paper-2:    #EAE6DE;
+  --ink:        #1A1917;
+  --ink-soft:   #46433E;
+  --ink-mute:   #77726A;
+  --rule:       #D9D4CA;
+  --rule-soft:  #E6E1D8;
+  --accent:     #2A2622;
+  --accent-lt:  #7A7064;
 
   --serif: "Newsreader", "Iowan Old Style", Georgia, "Times New Roman", serif;
   --sans:  "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
@@ -37,7 +37,7 @@ html {
 body {
   margin: 0;
   background: var(--paper);
-  background-image: linear-gradient(180deg, #F5F6F8 0%, var(--paper) 480px);
+  background-image: linear-gradient(180deg, #FAF9F6 0%, var(--paper) 480px);
   background-repeat: no-repeat;
   color: var(--ink);
   font-family: var(--serif);
@@ -53,7 +53,10 @@ img { max-width: 100%; height: auto; display: block; }
 a { color: var(--accent); text-decoration: none; }
 a:hover { color: var(--ink); }
 
-::selection { background: #E4E9F0; }
+::selection { background: #E6DFD2; }
+
+p a { text-decoration: underline; text-decoration-color: var(--rule); text-underline-offset: 3px; }
+p a:hover { text-decoration-color: currentColor; }
 
 /* ---------- layout ---------- */
 
