@@ -51,7 +51,9 @@
         Stanford University
       </p>
       <p class="meta-contact">
-        <a href="mailto:abrought@stanford.edu">abrought@stanford.edu</a>
+        <span class="email-text">abrought@stanford.edu</span>
+        <button type="button" class="copy-btn" data-copy="abrought@stanford.edu"
+                aria-label="Copy email address" title="Copy email address"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="14" height="14" rx="2.5"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg></button>
       </p>
       <p class="meta-links">
         <a href="https://github.com/Alex-Broughton" rel="me noopener">GitHub</a>
@@ -103,5 +105,34 @@
   </div>
 </footer>
 <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+<script>
+document.querySelectorAll('.copy-btn').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var text = btn.dataset.copy;
+    var icon = btn._icon || (btn._icon = btn.innerHTML);
+    var done = function () {
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      clearTimeout(btn._t);
+      btn._t = setTimeout(function () {
+        btn.innerHTML = icon;
+        btn.classList.remove('copied');
+      }, 2000);
+    };
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(done);
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); done(); } catch (e) {}
+      document.body.removeChild(ta);
+    }
+  });
+});
+</script>
 </body>
 </html>
