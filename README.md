@@ -9,7 +9,8 @@ Live at <https://alex-broughton.github.io/>.
 
 ```
 index.html          Home — portrait, bio, affiliations, contact, links
-research.html       Research areas + live publication list
+research.html       Research areas
+publications.html   Live publication list
 outreach.html       Outreach & leadership
 cv.html             Embedded + downloadable CV
 css/style.css       All styling (Newsreader serif + Inter sans)
@@ -57,7 +58,6 @@ Opening the files directly with `file://` will not work: `js/pubs.js` fetches
 ## Editing content
 
 Everything is in the HTML. The bio is in `index.html` under `.bio .prose`; research area
-text in `research.html`; outreach blocks in `outreach.html`. The four SVG research icons
-are inline in `research.html` and inherit `--accent`.
+text in `research.html`; outreach blocks in `outreach.html`.
 
 Design tokens — colors, fonts, measure — live in `:root` at the top of `css/style.css`.

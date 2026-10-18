@@ -100,14 +100,12 @@ function render() {
   const years = [...new Set(list.map((p) => p.year || '—'))]
     .sort((a, b) => (b === '—' ? -1 : a === '—' ? 1 : b - a));
 
-  let n = list.length;
   let html = '';
   for (const y of years) {
-    html += `<h3 class="pub-year">${esc(y)}</h3><ol class="pub-list">`;
+    html += `<div class="pub-group"><h3 class="pub-year">${esc(y)}</h3><ol class="pub-list">`;
     for (const p of list.filter((q) => (q.year || '—') === y)) {
       const title = p.url || (p.doi ? `https://doi.org/${p.doi}` : null);
       html += `<li class="pub">
-        <div class="idx">${n--}</div>
         <div>
           <h4 class="pub-title">${title
             ? `<a href="${esc(title)}" rel="noopener">${esc(p.title)}</a>`
@@ -117,7 +115,7 @@ function render() {
         </div>
       </li>`;
     }
-    html += '</ol>';
+    html += '</ol></div>';
   }
   host.innerHTML = html;
 }
