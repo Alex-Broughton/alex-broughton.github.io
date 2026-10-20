@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=20261018c">
+<link rel="stylesheet" href="css/style.css?v=20261020d">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -62,6 +62,20 @@
           to define a new full-well metric for LSSTCam sensors, and I build and validate the
           camera's calibration products.
         </p>
+        <figure class="area-fig area-fig--diagram">
+          <img src="img/research/image-formation.jpg" width="1844" height="834" alt="Image-formation forward model: an intrinsic galaxy is sheared by weak lensing, convolved with the PSF, pixelized, and passed through the instrument response before measurement" loading="lazy">
+          <figcaption>Forward model of image formation. An intrinsic galaxy is sheared by weak lensing (<em>g</em>&nbsp;=&nbsp;(0.01,&nbsp;0.01)), convolved with the point-spread function, pixelized, and passed through the instrument response, where detector effects such as the brighter-fatter effect imprint on the measurement.</figcaption>
+        </figure>
+        <figure class="area-fig area-fig--diagram">
+          <img src="img/research/lsstcam.jpg" width="2011" height="1044" alt="The LSST Camera with an inset showing the focal plane layout: 3 by 3 rafts of 4k by 4k sensors, a 9.6 square degree field of view, and the Moon for scale" loading="lazy">
+        </figure>
+        <figure class="area-fig area-fig--diagram">
+          <div class="fig-pair">
+            <img src="img/research/bf-pixel-boundaries.png" width="534" height="534" style="flex-grow:987" alt="Schematic of a 3 by 3 pixel grid in which the boundaries of the pixels around a collected charge Q are displaced from their nominal positions by shifts epsilon" loading="lazy">
+            <img src="img/research/bf-kernels.png" width="454" height="725" style="flex-grow:626" alt="Two maps of the brighter-fatter kernels, K^V and K^H, showing the vertical and horizontal pixel-boundary response around a central pixel" loading="lazy">
+          </div>
+          <figcaption>The brighter-fatter effect. <em>Left:</em> charge <em>Q</em> collected in a pixel displaces the boundaries of its neighbors (solid) from their nominal positions (dashed) by <em>&epsilon;</em><sub><em>ij</em></sub>. <em>Right:</em> the vertical and horizontal brighter-fatter kernels, <em>K</em><sup>V</sup> and <em>K</em><sup>H</sup>, which map the charge distribution to boundary shifts. See Rubin technical note <a href="https://dmtn-336.lsst.io/" target="_blank" rel="noopener">DMTN-336</a> for details.</figcaption>
+        </figure>
       </div>
     </details>
 
@@ -84,6 +98,10 @@
           with PSF diagnostics, shear mapping, photometric redshifts, and cluster cosmology on Rubin
           data previews.
         </p>
+        <figure class="area-fig">
+          <img src="img/research/lensing-map.jpg" width="2178" height="1771" alt="Weak-lensing aperture-mass map overlaid on a gri coadd image, with contours around three prominent mass peaks" loading="lazy">
+          <figcaption>Weak-lensing detection of three known galaxy clusters (Abell&nbsp;2809, Abell&nbsp;S67, and PSZ2&nbsp;G309.43&minus;72.86) in the E-mode aperture-mass map, <em>M</em><sub>ap</sub>, overlaid on a <em>gri</em> coadd from Rubin imaging. Contours indicate peak significance levels.</figcaption>
+        </figure>
       </div>
     </details>
 
@@ -106,6 +124,13 @@
           classifiers for survey visits. In my thesis I used deep learning to model Galactic γ-ray
           emission, tightening the systematic errors on the Fermi-LAT Galactic Center excess.
         </p>
+        <div class="logo-row">
+          <img src="img/research/sds-logo.png" width="662" height="344" alt="Stanford Data Science" loading="lazy">
+          <img src="img/research/c4du-logo.png" width="1310" height="348" alt="Center for Decoding the Universe at Stanford" loading="lazy">
+        </div>
+        <figure class="area-fig">
+          <img src="img/research/ml-workshop.jpg" width="1800" height="998" alt="Workshop participants working on laptops around a long table in a conference room" loading="lazy">
+        </figure>
       </div>
     </details>
 
