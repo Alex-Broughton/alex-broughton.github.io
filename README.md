@@ -11,7 +11,7 @@ Live at <https://alex-broughton.github.io/>.
 index.html          Home — portrait, bio, affiliations, contact, links
 research.html       Research areas
 publications.html   Live publication list
-outreach.html       Outside the lab
+outreach.html       Beyond the Research
 cv.html             Embedded + downloadable CV
 css/style.css       All styling (Newsreader serif + Inter sans)
 js/pubs.js          Renders data/publications.json; falls back to a live ORCID fetch
